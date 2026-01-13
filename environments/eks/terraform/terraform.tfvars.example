@@ -1,0 +1,6 @@
+cidr_block   = "10.0.0.0/16"
+project_name = "jr-portfolio"
+region = "us-west-2"
+tags = {
+    "Project": "jr-portfolio"
+}
