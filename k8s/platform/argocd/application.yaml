@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/SEU_USUARIO/mlops-platform-infra.git
+    repoURL: https://github.com/JonatasRodriguesReis/portfolio-mlops-inference-platform-infra.git
     targetRevision: main
     path: k8s/apps
 
