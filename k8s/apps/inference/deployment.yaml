@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: inference-api
-  namespace: mlops-inference-app
+  namespace: mlops-inference
   labels:
     app: inference-api
 spec:

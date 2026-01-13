@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/JonatasRodriguesReis/portfolio-mlops-inference-platform-infra.git
     targetRevision: main
-    path: k8s/apps
+    path: k8s/apps/inference
 
   destination:
     server: https://kubernetes.default.svc
