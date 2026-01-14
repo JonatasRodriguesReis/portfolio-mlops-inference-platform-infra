@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: inference-api
-          image: ghcr.io/jonatasrodriguesreis/portfolio-mlops-inference-platform-app:latest
+          image: ghcr.io/jonatasrodriguesreis/portfolio-mlops-inference-platform-app:2026.01.14.0114
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
