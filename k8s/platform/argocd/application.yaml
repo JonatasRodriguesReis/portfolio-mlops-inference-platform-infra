@@ -3,12 +3,6 @@ kind: Application
 metadata:
   name: mlops-apps
   namespace: argocd
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: inference=ghcr.io/jonatasrodriguesreis/portfolio-mlops-inference-platform-app
-    argocd-image-updater.argoproj.io/inference.update-strategy: newest-build
-    argocd-image-updater.argoproj.io/inference.allow-tags: regexp:^20.*
-    argocd-image-updater.argoproj.io/write-back-method: git
-    argocd-image-updater.argoproj.io/git-branch: main
 spec:
   project: default
 
