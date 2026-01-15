@@ -1,0 +1,13 @@
+grafana:
+  enabled: true
+  defaultDashboardsEnabled: true
+  adminUser: admin
+  adminPassword: admin123
+  service:
+    type: ClusterIP
+
+prometheus:
+  prometheusSpec:
+    retention: 7d
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false

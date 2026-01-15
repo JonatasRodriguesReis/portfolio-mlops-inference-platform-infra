@@ -3,11 +3,14 @@ kind: Service
 metadata:
   name: inference-api
   namespace: mlops-inference-app
+  labels:
+    app: inference-api
 spec:
   selector:
     app: inference-api
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 8000
   type: ClusterIP

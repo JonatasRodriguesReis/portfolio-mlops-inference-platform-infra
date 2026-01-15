@@ -1,6 +1,6 @@
 KIND_CLUSTER_NAME=mlops-kind
 
-.PHONY: kind-up bootstrap argocd-install image-updater-install
+.PHONY: kind-up bootstrap argocd-install image-updater-install prometheus-install
 
 ### =========================
 ### KIND
@@ -43,3 +43,26 @@ image-updater-install:
 		  --from-literal=token=$$GITHUB_TOKEN \
 		  --dry-run=client -o yaml | kubectl apply -f - ; \
 	fi
+
+### =========================
+### Prometheus Platform
+### =========================
+
+prometheus-install:
+	helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+	helm repo update
+
+	helm install monitoring prometheus-community/kube-prometheus-stack \
+  	-n monitoring \
+  	-f k8s/platform/monitoring/values-prometheus.yaml \
+  	--create-namespace
+
+
+
+loki:
+	helm repo add grafana https://grafana.github.io/helm-charts
+	helm repo update
+
+	helm install loki grafana/loki-stack \
+	-n observability \
+	-f k8s/platform/observability/loki/values.yaml
