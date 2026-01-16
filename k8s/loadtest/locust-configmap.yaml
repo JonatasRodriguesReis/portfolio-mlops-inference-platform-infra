@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: locustfile
+  namespace: mlops-inference-app
+data:
+  locustfile.py: |
+    from locust import HttpUser, task, between
+    import json
+    import random
+
+    class InferenceUser(HttpUser):
+        wait_time = between(0.1, 0.5)
+
+        @task
+        def predict(self):
+            payload = {
+                "text": "The quick brown fox jumps over the lazy dog"
+            }
+
+            headers = {
+                "Content-Type": "application/json"
+            }
+
+            self.client.post(
+                "/inference/predict",
+                data=json.dumps(payload),
+                headers=headers,
+                name="/inference/predict"
+            )

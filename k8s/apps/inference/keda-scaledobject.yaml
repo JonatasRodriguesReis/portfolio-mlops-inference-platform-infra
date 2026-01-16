@@ -13,6 +13,6 @@ spec:
       metadata:
         serverAddress: http://kube-prometheus-kube-prome-prometheus.observability:9090
         metricName: inference_rps
-        threshold: "5"
+        threshold: "2"
         query: |
           sum(rate(inference_requests_total{namespace="mlops-inference-app"}[1m]))
