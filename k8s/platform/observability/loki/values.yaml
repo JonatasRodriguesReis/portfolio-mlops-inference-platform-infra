@@ -1,5 +1,9 @@
 loki:
   auth_enabled: false
+  isDefault: false
+
+grafana:
+  enabled: false
 
 promtail:
   enabled: true
