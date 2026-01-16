@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: inference-api-scaledobject
+  namespace: mlops-inference-app
+spec:
+  scaleTargetRef:
+    name: inference-api
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://kube-prometheus-kube-prome-prometheus.observability:9090
+        metricName: inference_rps
+        threshold: "5"
+        query: |
+          sum(rate(inference_requests_total{namespace="mlops-inference-app"}[1m]))
